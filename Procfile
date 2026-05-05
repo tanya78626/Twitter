@@ -1,1 +1,1 @@
-web: gunicorn tweetproject.wsgi
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn tweetproject.wsgi
