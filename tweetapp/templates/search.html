@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Search Results</h2>
+
+{% if query %}
+    <p>You searched for: <strong>{{ query }}</strong></p>
+{% endif %}
+
+{% if results %}
+    {% for tweet in results %}
+        <div class="card my-2 p-3">
+            <p>{{ tweet.text }}</p>
+            <small>by {{ tweet.user.username }}</small>
+
+            {% if tweet.photo %}
+                <img src="{{ tweet.photo.url }}" class="img-fluid mt-2">
+            {% endif %}
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No results found</p>
+{% endif %}
+
+{% endblock %}
